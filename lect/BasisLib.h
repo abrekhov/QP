@@ -33,17 +33,13 @@ private:
 	int loadContent(char *, vector<string>& );
 	int parseString(const string&, vector<string>&);
 	int findDATA();
-	int getNewElement(){};
+	int getNewElement();
 	
+	vector< Element > superArray;
 
-	vector< pair<string, vector< pair<int, vector< pair<double,double> > > > > > superArray;
+//	vector< pair<string, vector< pair<int, vector< pair<double,double> > > > > > superArray;
 };
 #endif
-
-//TODO better to put this func in new Class 
-
-
-// TODO same as prev comment
 
 
 

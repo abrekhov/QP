@@ -18,13 +18,7 @@ int BasisLib::loadContent(char* filename, vector<string>& cont){
 
 // TODO same as prev comment
 
-int BasisLib::parseString(const string& inputStr, vector<string>& result){
-	result.clear();
-	stringstream ss;
-	ss<<inputStr;
-	string tStr;
-	while(ss>>tStr) result.push_back(tStr);
-}
+
 
 int BasisLib::findDATA(){
 	vector<string> tmpCont;
@@ -37,6 +31,14 @@ int BasisLib::findDATA(){
 	return -1;
 }
 
+int BasisLib::parseString(const string& inputStr, vector<string>& result){
+	result.clear();
+	stringstream ss;
+	ss<<inputStr;
+	string tStr;
+	while(ss>>tStr) result.push_back(tStr);
+}
+
 
 int BasisLib::load(char* filename){
 	loadContent(filename, content);
@@ -46,7 +48,19 @@ int BasisLib::load(char* filename){
 	int nPos = findDATA();
 	nPos++;
 	cout << nPos <<endl;
-	while(getNewElement()){
-		
+	vector<string> tmpCont;
+	for (int i=nPos; i<(int) content.size(); i++){
+		parseString(content[i], tmpCont);
+		if(tmpCont.size()==1){
+			Element element;
+			element.nameElement = tmpCont[i];
+			superArray.push_back(element);
+		}
 	}
+
+	for( int i=0; i< (int) superArray.size(); i++){
+		cout<<superArray[i].nameElement<<endl;
+	}
+		
 }
+
